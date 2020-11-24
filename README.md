@@ -1,2 +1,4 @@
-# action
-😷 CI mulle-sde projects with GitHub Actions
+# mulle-sde-ci
+
+😷  mulle-sde CI with GitHub Actions
+
