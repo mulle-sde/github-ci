@@ -4,7 +4,7 @@ jobs:
   mulleci:
     steps:  
       - name: Create Build Environment
-        run: ${{ github.workspace }}/.github/workflows/install-mulle-sde.sh
+        run: install-mulle-sde.sh
 
       - name: Add ~/bin to PATH
         run:  echo "$HOME/bin" >> $GITHUB_PATH
