@@ -1,4 +1,8 @@
 name: 'MulleSDE-CI'
 description: 'Run mulle-sde craft and test'
 runs:
-  main: 'install.sh'
+  using: "composite"
+  steps: 
+    - run: $GITHUB_ACTION_PATH/install.sh
+      shell: bash
+
