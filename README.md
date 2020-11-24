@@ -1,4 +1,4 @@
-# mulle-sde-ci
+# github-ci
 
-😷  mulle-sde CI with GitHub Actions
+😷  MulleSDE Continous Integration with GitHub Actions
 
