@@ -1,23 +1,24 @@
 name: 'MulleSDE-CI'
 description: 'Run mulle-sde craft and test'
-jobs:
-  mulleci:
-    steps:  
-      - name: Create Build Environment
-        run: install.sh
+runs:
+  jobs:
+    mulleci:
+      steps:  
+        - name: Create Build Environment
+          run: install.sh
 
-      - name: Add ~/bin to PATH
-        run:  echo "$HOME/bin" >> $GITHUB_PATH
+        - name: Add ~/bin to PATH
+          run:  echo "$HOME/bin" >> $GITHUB_PATH
 
-      - name: Dump Build Environment
-        run:  |
-              env | sort
+        - name: Dump Build Environment
+          run:  |
+                env | sort
 
-      - name: Mulle-SDE Fetch
-        run: mulle-sde fetch 
+        - name: Mulle-SDE Fetch
+          run: mulle-sde fetch 
       
-      - name: Mulle-SDE Craft
-        run: mulle-sde craft --${BUILD_TYPE:-release}
+        - name: Mulle-SDE Craft
+          run: mulle-sde craft --${BUILD_TYPE:-release}
 
-      - name: Mulle-SDE Test
-        run: mulle-sde test
+        - name: Mulle-SDE Test
+          run: mulle-sde test
