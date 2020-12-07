@@ -1,14 +1,18 @@
 #! /bin/sh
 
 OTHER_PROJECTS="${OTHER_PROJECTS}
-mulle-sde/mulle-test;latest"
+mulle-sde/mulle-test;"
 SDE_PROJECTS="${SDE_PROJECTS}
-mulle-sde-developer;latest"
+mulle-sde-developer;"
 
 echo "GITHUB_REF = ${GITHUB_REF}" >&2
 case "${GITHUB_REF}" in
-   */*[_-]prerelease|*/prerelease)
-      MULLE_SDE_DEFAULT_VERSION="prerelease"
+   */prerelease)
+      MULLE_SDE_DEFAULT_VERSION="latest-prerelease"
+   ;;
+
+   */*[-]prerelease)
+      MULLE_SDE_DEFAULT_VERSION="`basename -- "${GITHUB_REF}"`"
    ;;
 
    *)
