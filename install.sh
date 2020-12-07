@@ -7,8 +7,8 @@ mulle-sde-developer;latest"
 
 echo "GITHUB_REF = ${GITHUB_REF}" >&2
 case "${GITHUB_REF}" in
-   refs/heads/prerelease)
-      MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-${GITHUB_REF}}"
+   */*[_-]prerelease|*/prerelease)
+      MULLE_SDE_DEFAULT_VERSION="prerelease"
    ;;
 
    *)
