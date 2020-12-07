@@ -1,13 +1,11 @@
 #! /bin/sh
 
 OTHER_PROJECTS="${OTHER_PROJECTS}
-mulle-c/mulle-c-developer;latest
 mulle-sde/mulle-test;latest"
 SDE_PROJECTS="${SDE_PROJECTS}
 mulle-sde-developer;latest"
 
 echo "GITHUB_REF = ${GITHUB_REF}" >&2
-
 case "${GITHUB_REF}" in
    refs/heads/prerelease)
       MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-${GITHUB_REF}}"
