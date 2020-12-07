@@ -9,6 +9,9 @@ mulle-sde-developer;latest"
 export SDE_PROJECTS
 export OTHER_PROJECTS
 
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
+MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-release}"
+export MULLE_SDE_DEFAULT_VERSION
+
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/${MULLE_SDE_DEFAULT_VERSION}/bin/installer-all' && \
 chmod 755 installer-all && \
 ./installer-all ~ no
