@@ -6,10 +6,10 @@ mulle-sde/mulle-test;latest"
 SDE_PROJECTS="${SDE_PROJECTS}
 mulle-sde-developer;latest"
 
-echo "${GITHUB_REF} = ${GITHUB_REF}" >&2
+echo "GITHUB_REF = ${GITHUB_REF}" >&2
 
 case "${GITHUB_REF}" in
-   prerelease)
+   refs/heads/prerelease)
       MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-${GITHUB_REF}}"
    ;;
 
