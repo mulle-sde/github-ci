@@ -4,6 +4,5 @@
 
 This will install [mulle-sde](//mulle-sde.github.io) into the test container.
 
-Then the repository is built with `mulle-sde craft`. 
-If a `test` folder is present, then `mulle-sde test`
-will also be run.
+It doesn't run or test your project. That's what you need to specify in
+your projects `action.yml`.
