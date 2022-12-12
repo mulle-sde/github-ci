@@ -1,5 +1,5 @@
 name: 'MulleSDE-CI'
-description: 'Run mulle-sde craft and test'
+description: 'Install mulle-sde'
 runs:
   using: "composite"
   steps: 
