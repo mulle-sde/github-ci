@@ -5,7 +5,9 @@ mulle-sde/mulle-test;"
 SDE_PROJECTS="${SDE_PROJECTS}
 mulle-sde-developer;"
 
+
 echo "GITHUB_REF = ${GITHUB_REF}" >&2
+
 case "${GITHUB_REF}" in
    */prerelease)
       MULLE_SDE_DEFAULT_VERSION="latest-prerelease"
@@ -16,7 +18,15 @@ case "${GITHUB_REF}" in
    ;;
 
    *)
-      MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-release}"
+      case "${MULLE_HOSTNAME}" in
+         ci-prerelease)
+            MULLE_SDE_DEFAULT_VERSION="latest-prerelease"
+         ;;
+
+         *)
+            MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-release}"
+         ;;
+      esac
    ;;
 esac
 
