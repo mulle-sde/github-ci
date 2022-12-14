@@ -1,5 +1,7 @@
 #! /bin/sh
 
+[ "${TRACE}" = 'YES' ] && set -x && : "$0" "$@"
+
 OTHER_PROJECTS="${OTHER_PROJECTS}
 mulle-sde/mulle-test;"
 SDE_PROJECTS="${SDE_PROJECTS}
@@ -47,4 +49,4 @@ echo "Downloading installer-all from \"${url}\"" >&2
 curl -L -O "${url}" && \
 chmod 755 installer-all && \
 echo "Executing installer-all" >&2
-./installer-all "${HOME}" no
+TRACE=YES ./installer-all "${HOME}" no

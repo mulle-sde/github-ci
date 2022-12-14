@@ -3,19 +3,26 @@
 # mulle-clang compiler and mulle-sde
 #
 #FROM debian:bullseye-slim
-# docker build -t debian:mulle-ci-latest .
+# docker build --rm=false -t debian:mulle-ci-latest .
 
 FROM ubuntu:latest
-# docker build -t ubuntu:mulle-ci-latest .
+# docker build --rm=false -t ubuntu:mulle-ci-latest .
 
 ENV MULLE_HOSTNAME=ci-prerelease
 
+#
+# more convenient to have three different container step
+# if the compiler step fails, we don't need to rerun the curl install
+# on the next fix run
+#
 RUN DEBIAN_FRONTEND=noninteractive \
    apt-get update \
-   && apt-get -y install curl build-essential cmake uuid-runtime git lsb-release libpthread-stubs0-dev \
-   && curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb" \
-   && dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb" \
-   && curl -L -O "https://raw.githubusercontent.com/mulle-sde/mulle-sde/latest-prerelease/bin/installer-all" \
+   && apt-get -y install curl build-essential cmake uuid-runtime git lsb-release libpthread-stubs0-dev
+
+RUN curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb" \
+   && dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
+
+RUN curl -L -O "https://raw.githubusercontent.com/mulle-sde/mulle-sde/latest-prerelease/bin/installer-all" \
    && chmod 755 installer-all  \
    && OTHER_PROJECTS="mulle-sde/mulle-test;" \
       SDE_PROJECTS="mulle-sde-developer;" \
