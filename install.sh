@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env bash
 
 [ "${TRACE}" = 'YES' ] && set -x && : "$0" "$@"
 
@@ -10,10 +10,10 @@ mulle-sde-developer;"
 #
 # images that have mulle-sde already installed, skip...
 #
-if ! `PATH="${HOME}/bin:${PATH}" command -v mulle-sde 2> /dev/null`
+if PATH="${HOME}/bin:${PATH}" command -v mulle-sde 2> /dev/null
 then
    echo "mulle-sde is already installed" >&2
-   return
+   exit 0
 fi
 
 echo "GITHUB_REF = ${GITHUB_REF}" >&2
