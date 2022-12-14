@@ -12,6 +12,7 @@ mulle-sde-developer;"
 #
 if ! `PATH="${HOME}/bin:${PATH}" command -v mulle-sde 2> /dev/null`
 then
+   echo "mulle-sde is already installed" >&2
    return
 fi
 
@@ -49,4 +50,4 @@ echo "Downloading installer-all from \"${url}\"" >&2
 curl -L -O "${url}" && \
 chmod 755 installer-all && \
 echo "Executing installer-all" >&2
-TRACE=YES ./installer-all "${HOME}" no
+./installer-all "${HOME}" no
