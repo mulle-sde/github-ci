@@ -8,7 +8,7 @@
 FROM ubuntu:latest
 # docker build -t ubuntu:mulle-ci-latest .
 
-ENV MULLE_HOSTNAME ci-prerelease
+ENV MULLE_HOSTNAME=ci-prerelease
 
 RUN DEBIAN_FRONTEND=noninteractive \
    apt-get update \

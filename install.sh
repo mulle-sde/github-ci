@@ -8,7 +8,7 @@ mulle-sde-developer;"
 #
 # images that have mulle-sde already installed, skip...
 #
-if ! `PATH="~/bin:$PATH" command -v mulle-sde 2> /dev/null`
+if ! `PATH="${HOME}/bin:${PATH}" command -v mulle-sde 2> /dev/null`
 then
    return
 fi
@@ -47,4 +47,4 @@ echo "Downloading installer-all from \"${url}\"" >&2
 curl -L -O "${url}" && \
 chmod 755 installer-all && \
 echo "Executing installer-all" >&2
-./installer-all ~ no
+./installer-all "${HOME}" no
