@@ -5,6 +5,13 @@ mulle-sde/mulle-test;"
 SDE_PROJECTS="${SDE_PROJECTS}
 mulle-sde-developer;"
 
+#
+# images that have mulle-sde already installed, skip...
+#
+if [ -x ~/bin/mulle-sde ]
+then
+   return
+fi
 
 echo "GITHUB_REF = ${GITHUB_REF}" >&2
 
