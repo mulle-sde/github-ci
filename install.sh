@@ -8,7 +8,7 @@ mulle-sde-developer;"
 #
 # images that have mulle-sde already installed, skip...
 #
-if [ -x ~/bin/mulle-sde ]
+if ! `PATH="~/bin:$PATH" command -v mulle-sde 2> /dev/null`
 then
    return
 fi
