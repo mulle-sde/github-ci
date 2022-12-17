@@ -24,7 +24,11 @@ RUN curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/downloa
 
 RUN curl -L -O "https://raw.githubusercontent.com/mulle-sde/mulle-sde/latest-prerelease/bin/installer-all" \
    && chmod 755 installer-all  \
-   && OTHER_PROJECTS="mulle-sde/mulle-test;" \
+   && OTHER_PROJECTS="mulle-sde/mulle-test; \
+mulle-c/mulle-c-developer; \
+mulle-objc/mulle-objc-developer; \
+MulleFoundation/mulle-foundation-developer; \
+MulleFoundation/foundation-developer;" \
       SDE_PROJECTS="mulle-sde-developer;" \
       MULLE_SDE_DEFAULT_VERSION=latest-prerelease ./installer-all /usr no
 
