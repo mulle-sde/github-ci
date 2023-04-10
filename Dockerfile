@@ -17,7 +17,7 @@ ENV MULLE_HOSTNAME=ci-prerelease
 #
 RUN DEBIAN_FRONTEND=noninteractive \
    apt-get update \
-   && apt-get -y install curl build-essential cmake uuid-runtime git lsb-release libpthread-stubs0-dev
+   && apt-get -y install curl build-essential cmake uuid-runtime git lsb-release libpthread-stubs0-dev libssl-dev
 
 RUN curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb" \
    && dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"

@@ -13,10 +13,10 @@ mulle-sde version will be used.
 
 ## Run github actions locally with docker
 
-Clone the project and then create a docker image
+Clone the project and then create a docker image:
 
 ``` bash
-docker build --rm=false -t ubuntu:mulle-ci-latest github-ci
+docker build -t ubuntu:mulle-ci-latest github-ci
 ```
 
 

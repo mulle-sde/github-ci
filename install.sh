@@ -46,8 +46,18 @@ export OTHER_PROJECTS
 
 url="https://raw.githubusercontent.com/mulle-sde/mulle-sde/${MULLE_SDE_DEFAULT_VERSION}/bin/installer-all"
 
+CURL="`command -v curl`"
+if [ -z "${CURL}" -a ! -z "`command -v wget`" ]
+then
+   CURL="wget"
+   CURLFLAGS=""
+else
+   CURLFLAGS="${CURLFLAGS} -L -O"
+fi
+
+
 echo "Downloading installer-all from \"${url}\"" >&2
-curl -L -O "${url}" && \
+"${CURL}" ${CURLFLAGS} "${url}" && \
 chmod 755 installer-all && \
-echo "Executing installer-all" >&2
+echo "Executing installer-all" >&2 && \
 ./installer-all "${HOME}" no
