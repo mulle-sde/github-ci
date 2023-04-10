@@ -57,7 +57,7 @@ fi
 
 
 echo "Downloading installer-all from \"${url}\"" >&2
-"${CURL}" ${CURLFLAGS} "${url}" && \
+"${CURL:-curl}" ${CURLFLAGS} "${url}" && \
 chmod 755 installer-all && \
 echo "Executing installer-all" >&2 && \
 ./installer-all "${HOME}" no
