@@ -47,14 +47,33 @@ export OTHER_PROJECTS
 url="https://raw.githubusercontent.com/mulle-sde/mulle-sde/${MULLE_SDE_DEFAULT_VERSION}/bin/installer-all"
 
 CURL="`command -v curl`"
-if [ -z "${CURL}" -a ! -z "`command -v wget`" ]
+CURLFLAGS="${CURLFLAGS} -L -O"
+if [ -z "${CURL}" ]
 then
-   CURL="wget"
-   CURLFLAGS=""
-else
-   CURLFLAGS="${CURLFLAGS} -L -O"
-fi
+   if [ ! -z "`command -v wget`" ]
+   then
+      CURL="wget"
+      CURLFLAGS=""
+   else
+      if [ ! -z "`command -v uname`" ]
+      then
+         case "`uname`" in
+            [Dd]arwin)
+               brew install curl
+            ;;
 
+            [Ll]inux)
+               if [ `id -u` -eq 0 ]
+               then
+                  apt-get install -y curl
+               else
+                  sudo apt-get install -y curl
+               fi
+            ;;
+         esac
+      fi
+   fi
+fi
 
 echo "Downloading installer-all from \"${url}\"" >&2
 "${CURL:-curl}" ${CURLFLAGS} "${url}" && \
