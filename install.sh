@@ -8,6 +8,12 @@ SDE_PROJECTS="${SDE_PROJECTS}
 mulle-sde-developer;"
 
 #
+# if curl isn't installed, expect a _really_ barebones environment
+# lets fetch some other stuff, that we are most likely to need down
+# the road anyway, due to other github-ci actions
+#
+LINUX_PACKAGES=curl git bsdmainutils cmake ninja-build build-essential lsb-release
+#
 # images that have mulle-sde already installed, skip...
 #
 if PATH="${HOME}/bin:${PATH}" command -v mulle-sde > /dev/null
@@ -66,10 +72,10 @@ then
                if [ `id -u` -eq 0 ]
                then
                   apt-get update
-                  apt-get install -y curl git bsdmainutils cmake ninja-build build-essential
+                  apt-get install -y ${LINUX_PACKAGES}
                else
                   sudo apt-get update
-                  sudo apt-get install -y curl git bsdmainutils cmake ninja-build build-essential
+                  sudo apt-get install -y ${LINUX_PACKAGES}
                fi
             ;;
          esac
