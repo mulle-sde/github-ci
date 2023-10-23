@@ -12,7 +12,7 @@ mulle-sde-developer;"
 # lets fetch some other stuff, that we are most likely to need down
 # the road anyway, due to other github-ci actions
 #
-LINUX_PACKAGES=curl git bsdmainutils cmake ninja-build build-essential lsb-release
+LINUX_PACKAGES="curl git bsdmainutils cmake ninja-build build-essential lsb-release"
 #
 # images that have mulle-sde already installed, skip...
 #
