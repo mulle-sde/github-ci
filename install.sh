@@ -59,17 +59,17 @@ then
       then
          case "`uname`" in
             [Dd]arwin)
-               brew install curl
+               brew install curl git cmake ninja
             ;;
 
             [Ll]inux)
                if [ `id -u` -eq 0 ]
                then
                   apt-get update
-                  apt-get install -y curl git
+                  apt-get install -y curl git bsdmainutils cmake ninja-build build-essential
                else
                   sudo apt-get update
-                  sudo apt-get install -y curl git
+                  sudo apt-get install -y curl git bsdmainutils cmake ninja-build build-essential
                fi
             ;;
          esac
