@@ -65,8 +65,10 @@ then
             [Ll]inux)
                if [ `id -u` -eq 0 ]
                then
+                  apt-get update
                   apt-get install -y curl
                else
+                  sudo apt-get update
                   sudo apt-get install -y curl
                fi
             ;;
