@@ -66,10 +66,10 @@ then
                if [ `id -u` -eq 0 ]
                then
                   apt-get update
-                  apt-get install -y curl
+                  apt-get install -y curl git
                else
                   sudo apt-get update
-                  sudo apt-get install -y curl
+                  sudo apt-get install -y curl git
                fi
             ;;
          esac
