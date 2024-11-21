@@ -40,7 +40,7 @@ case "${GITHUB_REF}" in
          ;;
 
          *)
-            MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-release}"
+            MULLE_SDE_DEFAULT_VERSION="${MULLE_SDE_DEFAULT_VERSION:-master}"
          ;;
       esac
    ;;
